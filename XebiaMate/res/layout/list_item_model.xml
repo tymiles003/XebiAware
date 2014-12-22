@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/background_card"
+    android:padding="5dp" >
+
+    <ImageView
+        android:id="@+id/iv_item"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/iv_item"
+        android:maxLines="2"
+        android:text="Hellooo" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@+id/iv_cart"
+        android:layout_toRightOf="@+id/iv_item"
+        android:maxLines="1"
+        android:text="Hi" />
+
+    <TextView
+        android:id="@+id/iv_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:text="1"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:paddingTop="5dp"
+        android:background="@drawable/ic_action_bag" />
+
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/text_light_grey" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/tv_dark_green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Total Amount"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tv_totalAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:text="10000"
+            android:textColor="@color/background_tab_strip"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_saveOrder"
+            style="@style/btn_order"
+            android:layout_weight="1"
+            android:text="Save" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btn_placeOrder"
+            style="@style/btn_order"
+            android:layout_weight="1"
+            android:text="Submit" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btn_removeOrder"
+            style="@style/btn_order"
+            android:layout_weight="1"
+            android:text="Remove" />
+    </LinearLayout>
+
+</LinearLayout>

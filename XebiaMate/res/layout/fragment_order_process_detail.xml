@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/rl_orderInfo"
+        style="@style/match_wrap"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/app_color"
+        android:padding="20dp" >
+
+        <TextView
+            android:id="@+id/tv_idInfo"
+            style="@style/tv_grey_desc"
+            android:text="Order ID - "
+            android:textColor="@color/text_white" />
+
+        <TextView
+            android:id="@+id/tv_orderId"
+            style="@style/tv_grey_desc"
+            android:layout_toRightOf="@id/tv_idInfo"
+            android:text="XYZ12345"
+            android:textColor="@color/text_white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_orderAmount"
+            style="@style/tv_red_price"
+            android:layout_below="@+id/tv_idInfo"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/text_white" />
+
+        <TextView
+            android:id="@+id/tv_orderSubmittedDate"
+            style="@style/tv_grey_desc"
+            android:layout_alignBaseline="@+id/tv_orderAmount"
+            android:layout_alignParentRight="true"
+            android:text="04-Jan-14 5:45PM"
+            android:textColor="@color/text_white" />
+
+        <TextView
+            android:id="@+id/tv_orderStatusMessage"
+            style="@style/tv_grey_desc"
+            android:layout_below="@+id/tv_orderAmount"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/text_white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_customerInfo"
+        style="@style/match_wrap"
+        android:layout_below="@+id/rl_orderInfo"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/tv_grey_desc"
+            android:layout_toLeftOf="@+id/iv_edit_customerDetails"
+            android:inputType="textMultiLine" />
+
+        <ImageView
+            android:id="@+id/iv_edit_customerDetails"
+            style="@style/iv_edit" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_hz_sep1"
+        style="@style/view_hz_sep"
+        android:layout_below="@+id/rl_customerInfo" />
+
+    <RelativeLayout
+        android:id="@+id/rl_transportInfo"
+        style="@style/match_wrap"
+        android:layout_below="@+id/rl_customerInfo"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp" >
+
+        <TextView
+            android:id="@+id/tv_transportInfo"
+            style="@style/tv_grey_desc"
+            android:layout_toLeftOf="@+id/iv_edit_transportInfo"
+            android:inputType="textMultiLine" />
+
+        <ImageView
+            android:id="@+id/iv_edit_transportInfo"
+            style="@style/iv_edit" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_hz_sep2"
+        style="@style/view_hz_sep"
+        android:layout_below="@+id/rl_transportInfo" />
+
+    <ListView
+        android:id="@+id/lv_orderProcess"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="3dp"
+        android:scrollbars="none" >
+    </ListView>
+
+</RelativeLayout>

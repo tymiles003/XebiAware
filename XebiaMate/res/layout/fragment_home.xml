@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include
+        android:id="@+id/layoutLastUpdated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/header_last_updated" />
+
+    <GridView
+        android:id="@+id/gridEmployees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:horizontalSpacing="2dp"
+        android:numColumns="2"
+        android:verticalSpacing="2dp" >
+    </GridView>
+    
+     <TextView
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:text="No User found in this room"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/rl_progressBar"
+        style="@style/match_match"
+        android:visibility="gone" >
+
+        <include layout="@layout/custom_progress_bar" />
+    </RelativeLayout>
+
+</RelativeLayout>

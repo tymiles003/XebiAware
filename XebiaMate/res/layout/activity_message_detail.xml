@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/default_wallpaper"
+    tools:context="com.android.vantage.MessageDetailActivity" >
+
+    <RelativeLayout
+        android:id="@+id/rl_chatListView"
+        style="@style/match_match"
+        android:layout_above="@+id/rl_bottom" >
+
+        <include layout="@layout/list_view_model" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        style="@style/match_wrap"
+        android:layout_alignParentBottom="true"
+        android:background="@color/text_white" >
+
+        <EditText
+            android:id="@+id/et_sendMessage"
+            style="@style/match_wrap"
+            android:layout_toLeftOf="@+id/btn_sendMessage"
+            android:gravity="bottom"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:id="@+id/btn_sendMessage"
+            style="@style/wrap_wrap"
+            android:layout_alignParentRight="true"
+            android:text="Send" />
+    </RelativeLayout>
+
+</RelativeLayout>

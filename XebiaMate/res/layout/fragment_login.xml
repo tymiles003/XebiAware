@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_match"
+    android:background="#1F5C1B"
+    android:padding="20dp" >
+
+    <RelativeLayout
+        style="@style/match_wrap"
+        android:layout_centerInParent="true" >
+
+        <EditText
+            android:id="@+id/et_userName"
+            style="@style/et_form_single_line"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/account_b"
+            android:hint="Username"
+            android:textColorHint="#1F5C1B" />
+
+        <View
+            android:id="@+id/view_sep_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_userName" />
+
+        <EditText
+            android:id="@+id/et_mobileNumber"
+            style="@style/et_form_single_line"
+            android:layout_below="@+id/view_sep_1"
+            android:hint="Mobile Number"
+            android:inputType="phone" />
+
+        <View
+            android:id="@+id/view_sep_2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_mobileNumber" />
+
+        <EditText
+            android:id="@+id/et_passWord"
+            style="@style/et_form_single_line"
+            android:layout_below="@+id/view_sep_2"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <LinearLayout
+            style="@style/match_wrap"
+            android:layout_below="@+id/et_passWord"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_login_server_error"
+                style="@style/tv_error" />
+
+            <LinearLayout
+                style="@style/match_wrap"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btn_login"
+                    style="@style/btn_form"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Login"
+                    android:textColor="#1F5C1B" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

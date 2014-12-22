@@ -1,0 +1,161 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scrollView_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="8" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/xebia_logo" />
+
+            <RelativeLayout
+                android:id="@+id/rl_et_username"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/imageView1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@android:drawable/picture_frame"
+                android:paddingLeft="5dp" >
+
+                <ImageView
+                    android:id="@+id/iv_username_image"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/username_image" />
+
+                <View
+                    android:id="@+id/sepViewUsername"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/iv_username_image"
+                    android:background="#eee" />
+
+                <EditText
+                    android:id="@+id/et_userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/sepViewUsername"
+                    android:background="@null"
+                    android:fontFamily="sans-serif-condensed"
+                    android:hint="Enter Xebia ID"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true" />
+            </RelativeLayout>
+
+            <!-- <RelativeLayout
+                android:id="@+id/rl_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/rl_et_username"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:drawable/picture_frame"
+                android:paddingLeft="5dp" >
+
+                <ImageView
+                    android:id="@+id/iv_pwd_image"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/password_image" />
+
+                <View
+                    android:id="@+id/sepView"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/iv_pwd_image"
+                    android:background="#eee" />
+
+                <EditText
+                    android:id="@+id/et_passWord"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/sepView"
+                    android:background="@null"
+                    android:fontFamily="sans-serif-condensed"
+                    android:hint="Enter Password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true" />
+            </RelativeLayout>
+ -->
+            <TextView
+                android:id="@+id/tv_loginError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_et_username"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Please enter a valid username and password"
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_signIN"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@color/xebia_color"
+        android:fontFamily="sans-serif-condensed"
+        android:text="LOGIN"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@color/xebia_color"
+        android:fontFamily="sans-serif-condensed"
+        android:text="REGISTER"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</LinearLayout>

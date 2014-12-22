@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:drawable/picture_frame"
+    android:orientation="horizontal"
+    android:padding="20dp" >
+
+    <LinearLayout
+        android:id="@+id/ll_v_left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_left_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="5dp"
+            android:text="10"
+            android:textColor="@color/xebia_color"
+            android:textSize="28dp" />
+
+        <TextView
+            android:id="@+id/tv_left_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="5dp"
+            android:text="Total Users"
+            android:textColor="@color/text_color"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_v_right"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_right_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="right"
+            android:padding="5dp"
+            android:textColor="@color/xebia_color"
+            android:textSize="28dp" />
+
+        <TextView
+            android:id="@+id/tv_right_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="right"
+            android:padding="5dp"
+            android:textColor="@color/text_color"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+</LinearLayout>
