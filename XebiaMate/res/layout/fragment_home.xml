@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <include
-        android:id="@+id/layoutLastUpdated"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/tv_roomHeader"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        layout="@layout/header_last_updated" />
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:background="@color/text_white"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Ruby Room Users (12)"
+        android:textColor="@color/text_sea_green"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-    <GridView
-        android:id="@+id/gridEmployees"
-        android:layout_width="wrap_content"
+    <com.fortysevendeg.swipelistview.SwipeListView
+        xmlns:swipe="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/lv_swipe"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:horizontalSpacing="2dp"
-        android:numColumns="2"
-        android:verticalSpacing="2dp" >
-    </GridView>
-    
-     <TextView
+        android:layout_below="@+id/tv_roomHeader"
+        android:listSelector="#00000000"
+        swipe:swipeBackView="@+id/back"
+        swipe:swipeCloseAllItemsWhenMoveList="true"
+        swipe:swipeFrontView="@+id/front"
+        swipe:swipeMode="right"
+        swipe:swipeOffsetRight="100dp" />
+
+    <TextView
         android:id="@android:id/empty"
         android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:text="No User found in this room"
         android:visibility="gone" />
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_wrap" >
+
+    <TextView
+        android:id="@+id/tv_tab1"
+        style="@style/match_match"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:background="@color/xebia_color"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:inputType="textCapCharacters"
+        android:onClick="onTabButtonClicked"
+        android:text="List View"
+        android:textColor="@color/text_white"
+        android:textSize="20sp" />
+
+    <View style="@style/view_vertical_sep" />
+
+    <TextView
+        android:id="@+id/tv_tab2"
+        style="@style/match_match"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:background="@color/xebia_color"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:inputType="textCapCharacters"
+        android:onClick="onTabButtonClicked"
+        android:text="Group View"
+        android:textColor="@color/text_white"
+        android:textSize="20sp" />
+
+</LinearLayout>

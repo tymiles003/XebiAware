@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.devspark.robototextview.widget.RobotoTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tv_empName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:text="Ruby Room Users (12)"
+    android:textColor="@color/xebia_color"
+    android:textSize="22sp"
+    android:textStyle="bold"
+    app:typeface="roboto_bold" />

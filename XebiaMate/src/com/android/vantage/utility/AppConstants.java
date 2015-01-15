@@ -58,6 +58,7 @@ public class AppConstants {
 	public static final String course_id = "course_id";
 	public static final String updated_on = "updated_on";
 	public static final String LOGIN_KEY = "isUserLoggedIn";
+	public static final String XID = "XID";
 
 	public static class UI_DATES {
 		public static String EXAM_DATE = "Exam Date: ";
@@ -83,8 +84,8 @@ public class AppConstants {
 		public static final int GET_NEWS_ARTICLE = 0;
 		public static final int GET_ALERTS = 1;
 		public static final int GET_PARSE_JSON = 2;
-		
-	//	public static final int GET_PARSE_OBJECT = 3;
+
+		// public static final int GET_PARSE_OBJECT = 3;
 		public static final int GET_PARSE_USER_OBJECT = 4;
 		public static final int FIND_USER_SERVICE = 5;
 		public static final int GET_ALL_PARSE_USERS = 6;
@@ -103,6 +104,7 @@ public class AppConstants {
 	public static class BUNDLE_KEYS {
 		public static final String KEY_SERIALIZABLE_OBJECT = "KEY_SERIALIZABLE_OBJECT";
 		public static final String KEY_ROOM_NAME = "KEY_ROOM_NAME";
+		public static final String FRAGMENT_TYPE = "FRAGMENT_TYPE";
 		public static String KEY_EXAM_DETAIL = "keyExamDetail";
 		public static String KEY_NEWS_ARTICLE = "keyNewsArticle";
 		public static String KEY_CATAGORY_NAME = "KeyCategory";

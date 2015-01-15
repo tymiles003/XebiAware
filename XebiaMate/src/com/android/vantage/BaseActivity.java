@@ -2,6 +2,7 @@ package com.android.vantage;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -20,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.vantage.Fragments.BaseFragment;
 import com.android.vantage.Fragments.TaskFragment;
 import com.android.vantage.exceptionhandler.RestException;
 import com.android.vantage.utility.AppConstants;
@@ -34,15 +36,16 @@ public class BaseActivity extends ActionBarActivity implements
 	ActionBar bar;
 	public TaskFragment mTaskFragment;
 	ProgressDialog dialog;
+	protected BaseFragment fragment;
 
 	protected final String TAG = getTag();
 
 	public static boolean isInternetDialogVisible = false;
 
-	public String getActionTitle(){
+	public String getActionTitle() {
 		return getResources().getString(R.string.app_name);
 	}
-	
+
 	protected String getTag() {
 		return this.getClass().getSimpleName();
 	}
@@ -50,11 +53,10 @@ public class BaseActivity extends ActionBarActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 		bar = getSupportActionBar();
-		bar
-		.setBackgroundDrawable(
-				new ColorDrawable(getResources().getColor(
-						R.color.xebia_color)));
+		bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(
+				R.color.xebia_color)));
 		FragmentManager fm = getSupportFragmentManager();
 		mTaskFragment = (TaskFragment) fm.findFragmentByTag("task");
 
@@ -65,6 +67,30 @@ public class BaseActivity extends ActionBarActivity implements
 			fm.beginTransaction().add(mTaskFragment, "task").commit();
 		}
 		// fm.beginTransaction().add(mTaskFragment, "task").commit();
+	}
+
+	public void onActionItemClicked(View v) {
+		switch (v.getId()) {
+		case R.id.iv_refresh:
+
+			if (fragment != null) {
+				fragment.refreshData();
+			}
+
+			break;
+		case R.id.iv_search:
+			Intent searchActivity = new Intent(this,
+					FragmentHolderActivity.class);
+			Bundle b = new Bundle();
+			b.putInt(AppConstants.BUNDLE_KEYS.FRAGMENT_TYPE,
+					FragmentHolderActivity.FRAGMENT_TYPE_SEARCH);
+			searchActivity.putExtras(b);
+			startActivity(searchActivity);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	@Override
@@ -175,10 +201,10 @@ public class BaseActivity extends ActionBarActivity implements
 	@Override
 	public void onBackgroundError(RestException re, Exception e, int taskCode,
 			Object... params) {
-		
-		if(re != null){
-			showToast(re.getMessage()+"");
-		}else if(e != null){
+
+		if (re != null) {
+			showToast(re.getMessage() + "");
+		} else if (e != null) {
 			showToast(e.getMessage());
 		}
 

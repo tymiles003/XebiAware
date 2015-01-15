@@ -68,7 +68,7 @@ public class MessageListActivity extends BaseActivity implements
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
 		// TODO Auto-generated method stub
 		return new CursorLoader(MessageListActivity.this, ContentProvider.createUri(EmpData.class,
-				null), null, null, null, null);
+				null), null, Message.MESSAGE_TEXT + " IS NOT NULL OR "+Message.MESSAGE_TEXT + " != ''", null, null);
 	}
 
 	private void saveNewMessage() {

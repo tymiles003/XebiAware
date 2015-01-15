@@ -17,7 +17,7 @@ import android.util.Log;
 
 import com.android.vantage.Fragments.HomeFragment;
 import com.android.vantage.ModelClasses.EmpRecord;
-import com.android.vantage.ModelClasses.RoomBeaconMap;
+import com.android.vantage.ModelClasses.RoomBeaconObject;
 import com.android.vantageLogManager.Logger;
 import com.estimote.sdk.Beacon;
 import com.estimote.sdk.BeaconManager;
@@ -106,7 +106,7 @@ public class XebiaBeaconService extends Service {
 							}
 
 							currentBeacon = beacon;
-							currentRoomName = RoomBeaconMap
+							currentRoomName = RoomBeaconObject
 									.getRoomNameFromBeaconMac(currentBeacon
 											.getMacAddress());
 

@@ -215,7 +215,7 @@ public class UserAnalytics extends BaseModel implements Comparable<UserAnalytics
 
 	private static final String TAG = UserAnalytics.class.getSimpleName();
 
-	private static List<UserAnalytics> removingAdjacentNodes(int currentIndex,
+	private static List<UserAnalytics> removeAdjacentNodes(int currentIndex,
 			List<UserAnalytics> list) {
 		if (currentIndex >= list.size() - 1) {
 			return list;
@@ -226,9 +226,9 @@ public class UserAnalytics extends BaseModel implements Comparable<UserAnalytics
 			if (entry == exit) {
 				Logger.info(TAG, "Entry == Exit");
 				list.remove(currentIndex);
-				return removingAdjacentNodes(currentIndex, list);
+				return removeAdjacentNodes(currentIndex, list);
 			} else {
-				return removingAdjacentNodes(currentIndex + 1, list);
+				return removeAdjacentNodes(currentIndex + 1, list);
 			}
 		}
 
@@ -246,13 +246,12 @@ public class UserAnalytics extends BaseModel implements Comparable<UserAnalytics
 		}
 		printListEntryExit(list);
 		// removeSimilarAdjacentNodes(list);
-		list = removingAdjacentNodes(0, list);
+		list = removeAdjacentNodes(0, list);
 		Logger.error(TAG, "Printing list  after removal");
-		printListEntryExit(list);
 		return list;
 	}
 
-	private static void printListEntryExit(List<UserAnalytics> list) {
+	public static void printListEntryExit(List<UserAnalytics> list) {
 		Iterator<UserAnalytics> it = list.listIterator();
 		while (it.hasNext()) {
 			Logger.info(UserAnalytics.class.getSimpleName(), it.next()

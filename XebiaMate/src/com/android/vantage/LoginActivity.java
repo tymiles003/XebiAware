@@ -3,76 +3,72 @@ package com.android.vantage;
 import java.util.List;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnCloseListener;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.vantage.ModelClasses.EmpData;
-import com.android.vantage.ModelClasses.EmpRecord;
-import com.android.vantage.ModelClasses.UserAnalytics;
+import com.android.vantage.components.XebiaBeaconService;
 import com.android.vantage.exceptionhandler.RestException;
 import com.android.vantage.utility.AppConstants;
 import com.android.vantage.utility.SharedPreferenceUtil;
 import com.android.vantage.utility.Util;
 import com.android.vantageLogManager.Logger;
+import com.estimote.sdk.BeaconManager;
 import com.parse.FindCallback;
-import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
-import com.parse.SignUpCallback;
 
-public class LoginActivity extends BaseActivity implements OnClickListener {
-	EditText pwd, username;
-	Button register, login;
-	TextView errorView;
-	String errorText = "";
-	ProgressDialog dialog;
-	EmpData user;
+public class LoginActivity extends BaseActivity implements OnClickListener, OnQueryTextListener, OnCloseListener {
+	private EditText pwd, username;
+	private Button register, login;
+	private TextView errorView;
+	private String errorText = "";
+	private ProgressDialog dialog;
+	private EmpData user;
+	
+	private SearchView mSearchView;
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login_screen_new);
-		
-		ParseUser user = ParseUser.getCurrentUser();
+		setActionTitle("");
 		boolean isUserLoggedIn = SharedPreferenceUtil.getInstance(
 				getBaseContext()).getData(AppConstants.LOGIN_KEY, false);
 		if (isUserLoggedIn) {
-			startNextActivity(MainActivity.class);
+			startNextActivity(XebiaRoomViewActivity.class);
 
 		} else {
 			Util.downloadBeaconMap();
-			// Util.updateMappingTable(getBaseContext());
 			username = (EditText) findViewById(R.id.et_userName);
-			// pwd = (EditText) findViewById(R.id.et_passWord);
-			// register = (Button) findViewById(R.id.btn_register);
 			login = (Button) findViewById(R.id.btn_signIN);
 			errorView = (TextView) findViewById(R.id.tv_loginError);
 			// register.setOnClickListener(this);
 			login.setOnClickListener(this);
-
-			// Intent i = getIntent();
-			// String userString = i.getStringExtra(AppConstants.USERNAME);
-			// String pwdString = i.getStringExtra(CommonConstants.PASSWORD);
-			// if (userString != null) {
-			// username.setText(userString);
-			// }
-			// if (pwdString != null) {
-			// pwd.setText(pwdString);
-			// }
-
 		}
 
 	}
+	
+	
 	
 	
 	@Override
@@ -86,15 +82,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			} else {
 				makeRestCallToFindUser(userName.toUpperCase());
 				Util.hideKeyboard(this);
-				// validateUser(userName);
 
 			}
 			errorView.setText(errorText);
 			errorView.setVisibility(View.VISIBLE);
 			break;
-		// case R.id.btn_register:
-		// startNextActivity(RegisterActivity.class);
-		// break;
 		default:
 			break;
 		}
@@ -160,7 +152,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		parseUser.saveEventually();
 		SharedPreferenceUtil.getInstance(getBaseContext()).saveData(
 				AppConstants.LOGIN_KEY, true);
-		startNextActivity(MainActivity.class);
+		startNextActivity(XebiaRoomViewActivity.class);
 		ParseInstallation installation = ParseInstallation
 				.getCurrentInstallation();
 		installation.put(EmpData.EMP_ID, user.getEmpId());
@@ -168,45 +160,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 
 	}
 
-	private void validateUser(final String xid) {
-		ParseQuery<ParseUser> user = ParseUser.getQuery();
-		user.whereEqualTo("xebiaID", xid);
-
-		user.findInBackground(new FindCallback<ParseUser>() {
-
-			@Override
-			public void done(List<ParseUser> users, ParseException e) {
-				// TODO Auto-generated method stub
-				dialog.dismiss();
-				if (e == null) {
-					if (users != null && users.size() > 0) {
-						ParseUser user = users.get(0);
-						try {
-							ParseUser.logIn(user.getUsername(), xid);
-							SharedPreferenceUtil.getInstance(getBaseContext())
-									.saveData(AppConstants.LOGIN_KEY, true);
-							startNextActivity(MainActivity.class);
-						} catch (ParseException e1) {
-							errorView.setText("Unable to Login! Unknown Error");
-							errorView.setVisibility(View.VISIBLE);
-						}
-					}
-				} else {
-					runOnUiThread(new Runnable() {
-
-						@Override
-						public void run() {
-							// TODO Auto-generated method stub
-							errorView
-									.setText("Xebia ID is not found on server");
-							errorView.setVisibility(View.VISIBLE);
-						}
-					});
-				}
-			}
-
-		});
-	}
 
 	private void makeRestCallToFindUser(final String xid) {
 		executeTask(AppConstants.TASK_CODES.FIND_USER_SERVICE, xid);
@@ -226,6 +179,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			if (response != null) {
 
 				user = (EmpData) response;
+				user.save();
 				Logger.info(TAG, "User:" + user + response);
 				loginUser(user);
 			}
@@ -257,5 +211,57 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		startActivity(i);
 		finish();
 	}
+	
+	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
+        mSearchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+       // mSearchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        //setupSearchView();
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void setupSearchView() {
+
+     //   mSearchView.setIconifiedByDefault(true);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        if (searchManager != null) {
+            List<SearchableInfo> searchables = searchManager.getSearchablesInGlobalSearch();
+
+            // Try to use the "applications" global search provider
+            SearchableInfo info = searchManager.getSearchableInfo(getComponentName());
+            for (SearchableInfo inf : searchables) {
+                if (inf.getSuggestAuthority() != null
+                        && inf.getSuggestAuthority().startsWith("applications")) {
+                    info = inf;
+                }
+            }
+            mSearchView.setSearchableInfo(info);
+        }
+
+        mSearchView.setOnQueryTextListener(this);
+        mSearchView.setOnCloseListener(this);
+    }
+
+    public boolean onQueryTextChange(String newText) {
+        showToast("Query = " + newText);
+        return false;
+    }
+
+    public boolean onQueryTextSubmit(String query) {
+    	showToast("Query = " + query + " : submitted");
+        return false;
+    }
+
+    public boolean onClose() {
+    	showToast("Closed!");
+        return false;
+    }
 
 }

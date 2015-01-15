@@ -5,7 +5,8 @@
     <color name="background_action_bar">#1ABB9C</color>
     <color name="text_price_color">#8A0808</color>
     <color name="text_title_color">#0A2A12</color>
-    <color name="xebia_color">#6D276A</color>
+    <color name="xebia_color">#6D276D</color>
+    <color name="text_dark_xebia">#400E3F</color>
     <!-- Chart colors -->
     <color name="chart_purple">#80699B</color>
     <color name="chart_blue">#4572A7</color>
@@ -26,7 +27,8 @@
     <color name="counter_text_color">#c5c4c4</color>
     <color name="text_dark_purple">#1F567D</color>
     <color name="text_color">#000000</color>
-    <color name="text_sea_green">#15b865</color>
+    <color name="text_sea_green">#04766C</color>
+    <!-- 15b865 -->
     <color name="button_green">#15b865</color>
     <color name="button_red">#f92121</color>
     <color name="dark_purple">#641f60</color>
@@ -35,9 +37,29 @@
     <color name="gray_light">#c0c0c0</color>
     <color name="text_light_grey">#909090</color>
     <color name="text_white">#fff</color>
+    <color name="text_purple_thin"> #6E276A</color>
+    <color name="text_dark_grey">#666667</color>
+    <color name="text_grey">#a3a3a3</color>
     <color name="text_dark_blue">#1B4B6D</color>
     <color name="list_background">#fff</color>
     <color name="list_background_pressed">#15967d</color>
     <color name="app_color">#6D276A</color>
+    <color name="beacon_row_color_1">#08A89C</color>
+    <color name="beacon_row_color_2">#0B9188</color>
+    <color name="beacon_row_color_3"> #04766C</color>
+    <color name="beacon_row_color_4">#0C4C4B</color>
+    <color name="beacon_row_color_5">#033C36</color>
+    <color name="background_app">#dedede</color>
+    <color name="background_list_back">#e3e3e3</color>
+    <color name="background_list_front">#ffffff</color>
+    <color name="text_title">#444444</color>
+    <color name="text_description">#7e7e7e</color>
+    <color name="line">#ffbcbcbc</color>
+    <color name="background_new_tag">#ff0000</color>
+    <color name="text_new_tag">#ffffff</color>
+    
+    <color name="dot_color">#4CC1B8</color>
+    
+    
 
 </resources>

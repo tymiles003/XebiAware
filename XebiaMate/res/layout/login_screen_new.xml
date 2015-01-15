@@ -23,7 +23,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="40dp"
-                android:src="@drawable/xebia_logo" />
+                android:src="@drawable/xebia_training_logo" />
 
             <RelativeLayout
                 android:id="@+id/rl_et_username"
@@ -61,7 +61,7 @@
                     android:layout_toRightOf="@+id/sepViewUsername"
                     android:background="@null"
                     android:fontFamily="sans-serif-condensed"
-                    android:hint="Enter Xebia ID"
+                    android:hint="Enter Xebia ID e.g. XI246"
                     android:paddingLeft="5dp"
                     android:singleLine="true" />
             </RelativeLayout>

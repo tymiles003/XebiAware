@@ -62,7 +62,7 @@ public class EmpRecord extends Model {
 		if (user != null) {
 			if (b != null)
 				user.put(CURRENT_REGION_MAC, b.getMacAddress());
-			user.put(RoomBeaconMap.ROOM_NAME, roomName);
+			user.put(RoomBeaconObject.ROOM_NAME, roomName);
 			user.saveEventually();
 			updateData();
 		}
@@ -124,12 +124,12 @@ public class EmpRecord extends Model {
 		obj.put(IS_ENTERED, isEntered);
 		double distance = Utils.computeAccuracy(b);
 		obj.put(DISTANCE, distance);
-		obj.put(RoomBeaconMap.ROOM_NAME, roomName);
+		obj.put(RoomBeaconObject.ROOM_NAME, roomName);
 		obj.put(BEACON_MAC_ADDRESS, b.getMacAddress() + "");
 		obj.saveEventually();
 		
 		roomObj.put(EmpData.EMP_ID, user.getUsername());
-		roomObj.put(RoomBeaconMap.ROOM_NAME, roomName);
+		roomObj.put(RoomBeaconObject.ROOM_NAME, roomName);
 		roomObj.put(IS_ENTERED, isEntered);
 		roomObj.put(DISTANCE, distance);
 		roomObj.put(BEACON_MAC_ADDRESS, b.getMacAddress() + "");

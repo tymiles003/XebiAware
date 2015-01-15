@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/back"
+        style="@style/ListBackContent"
+        android:tag="back" >
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="20dp"
+            android:id="@+id/tv_call"
+            style="@style/ListButtonAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/phone"
+            android:text="Call"
+            android:textColor="@color/text_white" />
+
+        <TextView
+            android:id="@+id/tv_pushMessage"
+            style="@style/ListButtonAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/chat"
+            android:text="Push Message"
+            android:textColor="@color/text_white" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            style="@style/ListButtonAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/mail"
+            android:text="Email"
+            android:textColor="@color/text_white" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/front"
+        style="@style/ListFrontContent"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:tag="front" >
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/iv_empIm"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            app:border="false"
+            app:shadow="false" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/tv_empName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/iv_empIm"
+            android:text="Nitin Bansal"
+            android:textColor="@color/xebia_color"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:typeface="roboto_condensed_regular" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/tv_empDesignation"
+            style="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_empName"
+            android:layout_marginTop="1dp"
+            android:layout_toRightOf="@+id/iv_empIm"
+            android:text="Strategy Lead"
+            android:textColor="@color/text_dark_grey"
+            android:textSize="14sp"
+            app:typeface="roboto_bold" />
+    </RelativeLayout>
+
+</FrameLayout>

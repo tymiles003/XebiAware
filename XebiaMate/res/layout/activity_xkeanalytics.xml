@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F1F1"
+    android:background="@color/text_white"
     android:orientation="vertical" >
 
     <TableLayout
@@ -19,11 +19,20 @@
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/table_analytics"
-        android:orientation="vertical" 
-        android:paddingBottom="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_above="@+id/tv_tap_on_bar"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        android:paddingBottom="10dp" >
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_tap_on_bar"
+        style="@style/match_wrap"
+        android:layout_above="@+id/layoutLastUpdated"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="Tap on the bar to enter each room"
+        android:textColor="@color/text_light_grey" />
 
     <include
         android:id="@+id/layoutLastUpdated"

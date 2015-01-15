@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        android:dividerHeight="3dp"
+        android:dividerHeight="1dp"
         android:scrollbars="none" >
     </ListView>
 
@@ -29,8 +29,9 @@
 
     <TextView
         android:id="@android:id/empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:text="Click Here to Load Data"
         android:visibility="gone" />
 

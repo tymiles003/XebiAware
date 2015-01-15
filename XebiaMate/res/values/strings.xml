@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Xebia POC</string>
+    <string name="app_name">XebiAware</string>
     <string name="actionbar_title">Xebia POC</string>
     <string name="title_activity_product_detail">Xebia POC</string>
     <string name="hello_world">Hello world!</string>
@@ -51,5 +51,9 @@
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="title_activity_message_list">MessageListActivity</string>
     <string name="title_activity_message_detail">MessageDetailActivity</string>
+    <string name="title_activity_room_analytics">RoomAnalyticsActivity</string>
+    <string name="title_activity_xebia_room_view">XebiaRoomViewActivity</string>
+    <string name="title_activity_fragment_holder">FragmentHolderActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
 
 </resources>

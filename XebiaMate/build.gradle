@@ -3,19 +3,22 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.8.+'
+        classpath 'com.android.tools.build:gradle:0.12.+'
     }
 }
 apply plugin: 'android'
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
+    provided 'com.android.support:appcompat-v7:20.0.0'
+    provided 'com.android.support:support-v4:20.0.0'
+    compile files('libs/estimote-sdk-preview.jar')
+    compile files('libs/Parse-1.4.3.jar')
 }
 
-android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.3"
-
+def extension = android {
+    compileSdkVersion 20
+    buildToolsVersion '19.1.0'
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -39,4 +42,11 @@ android {
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
     }
+    compileSdkVersion 20
+}
+extension
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion '19.1.0'
 }

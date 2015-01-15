@@ -1,4 +1,6 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="schemas.android.com/apk/res-auto" >
 
     <item
         android:id="@+id/add_to_cart"
@@ -6,6 +8,12 @@
         android:orderInCategory="100"
         android:showAsAction="always"
         android:title="Add"/>
-    
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:orderInCategory="200"
+        android:showAsAction="always"
+        android:title="Search"
+        app:actionViewClass="android.support.v7.widget.SearchView"/>
 
 </menu>

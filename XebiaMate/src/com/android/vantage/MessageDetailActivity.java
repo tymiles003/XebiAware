@@ -46,6 +46,8 @@ public class MessageDetailActivity extends BaseActivity implements
 		msgBox = (EditText) findViewById(R.id.et_sendMessage);
 		findViewById(R.id.btn_sendMessage).setOnClickListener(this);
 
+		bar.setDisplayHomeAsUpEnabled(true);
+		bar.setDisplayUseLogoEnabled(false);
 		setActionTitle(empName);
 
 	}
@@ -105,13 +107,13 @@ public class MessageDetailActivity extends BaseActivity implements
 					RelativeLayout.TRUE);
 			params.setMargins(20, 10, 0, 0);
 			holder.msgText.setGravity(Gravity.RIGHT);
-			rl.setBackgroundResource(R.drawable.balloon_outgoing_focused);
+			rl.setBackgroundResource(R.drawable.balloon_outgoing_normal);
 
 		} else {
 			params.addRule(RelativeLayout.ALIGN_PARENT_LEFT,
 					RelativeLayout.TRUE);
 			params.setMargins(0, 10, 20, 0);
-			rl.setBackgroundResource(R.drawable.balloon_incoming_normal);
+			rl.setBackgroundResource(R.drawable.balloon_incoming_focused);
 		}
 		rl.setLayoutParams(params);
 		holder.msgText.setText(c.getString(c

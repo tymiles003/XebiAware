@@ -21,6 +21,7 @@ public class GetParseUserData extends GenericService {
 		List<ParseUser> objects;
 		if (params != null && params.length > 0) {
 			ParseQuery<ParseUser> query = (ParseQuery<ParseUser>) params[0];
+			
 			objects = query.find();
 			for(ParseUser obj : objects){
 				ParseUserData data = ParseUserData.getUserFromParseUser(obj);

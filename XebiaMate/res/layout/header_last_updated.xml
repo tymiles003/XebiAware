@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/text_dark_blue"
-    
+    android:background="@color/beacon_row_color_1"
     android:onClick="lastUpdatedClicked" >
 
     <TextView
@@ -27,7 +26,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:background="@color/text_dark_blue"
+        android:background="@color/text_sea_green"
         android:visibility="gone" />
 
 </RelativeLayout>

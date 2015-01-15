@@ -33,13 +33,6 @@ public class BarChartFragment extends BaseFragment {
 
 	@Override
 	public void initViews() {
-		Bundle b = getArguments();
-		HashMap<String, Long> roomTimeStatistics = (HashMap<String, Long>) b
-				.getSerializable("MapStatistics");
-		LinearLayout chartContainer = (LinearLayout) findView(R.id.chart);
-		// remove any views before u paint the chart
-		chartContainer.removeAllViews();
-		chartContainer.addView(getChartView(getActivity(), roomTimeStatistics, null));
 	}
 
 	public static Fragment getInstance(Bundle b) {
@@ -124,6 +117,7 @@ public class BarChartFragment extends BaseFragment {
 		multiRenderer.setMarginsColor(ctx.getResources().getColor(
 				R.color.text_white));
 		multiRenderer.setBarWidth(50f);
+		
 		multiRenderer.setAxesColor(ctx.getResources().getColor(
 				R.color.text_color));
 		multiRenderer.setXLabelsColor(ctx.getResources().getColor(
@@ -153,7 +147,12 @@ public class BarChartFragment extends BaseFragment {
 		long yMax = 0L;
 		for (Entry<String, Long> entry : roomTimeStatistics.entrySet()) {
 			// XYSeries itemSeries = new XYSeries(entry.getKey());
-
+			if(entry.getKey() == null){
+				continue;
+			}
+			if(entry.getKey().isEmpty()){
+				continue;
+			}
 			ser.add(c, entry.getValue());
 			multiRenderer.addXTextLabel(c, entry.getKey());
 			// itemSeries.add(1, entry.getValue());
@@ -166,6 +165,7 @@ public class BarChartFragment extends BaseFragment {
 			c++;
 
 		}
+	
 		if(yMax>5){
 			// setting no of values to display in y axis
 			multiRenderer.setYLabels(5);
@@ -176,6 +176,7 @@ public class BarChartFragment extends BaseFragment {
 		multiRenderer.setYAxisMax(yMax);
 		dataset.addSeries(ser);
 		XYSeriesRenderer itemRenderer = new XYSeriesRenderer();
+		
 		itemRenderer.setColor(ctx.getResources().getColor(R.color.xebia_color)); // color
 																					// of
 																					// the
@@ -184,6 +185,7 @@ public class BarChartFragment extends BaseFragment {
 		itemRenderer.setLineWidth(2);
 		itemRenderer.setDisplayChartValues(true);
 		itemRenderer.setDisplayChartValuesDistance(10);
+		
 		multiRenderer.addSeriesRenderer(itemRenderer);
 
 		// this part is used to display graph on the xml

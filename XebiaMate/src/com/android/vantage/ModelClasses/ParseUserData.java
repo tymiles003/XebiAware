@@ -1,6 +1,7 @@
 package com.android.vantage.ModelClasses;
 
 import java.io.Serializable;
+import java.security.acl.LastOwnerException;
 
 import android.provider.BaseColumns;
 
@@ -11,8 +12,8 @@ import com.google.gson.annotations.Expose;
 import com.parse.ParseUser;
 
 @Table(name = "ParseUserData", id = BaseColumns._ID)
-public class ParseUserData extends BaseModel implements Serializable{
-	
+public class ParseUserData extends BaseModel implements Serializable {
+
 	public static final String IS_USER_ONLINE = "isUserOnline";
 	public static final String ROOM_NAME = "RoomName";
 	public static final String CURRENT_BEACON_MAC = "CurrentBeaconMac";
@@ -49,15 +50,15 @@ public class ParseUserData extends BaseModel implements Serializable{
 	@Expose
 	@Column
 	private String RoomName;
-	
+
 	@Expose
 	@Column
 	private Boolean isUserOnline;
-	
+
 	@Expose
 	@Column
 	private String lastSeenAt;
-	
+
 	@Expose
 	@Column
 	private String CurrentBeaconMac;
@@ -157,7 +158,7 @@ public class ParseUserData extends BaseModel implements Serializable{
 	public void setRoomName(String roomName) {
 		RoomName = roomName;
 	}
-	
+
 	public static ParseUserData getUserFromParseUser(ParseUser obj) {
 		ParseUserData data = new ParseUserData();
 		data.empId = obj.getUsername();
@@ -173,7 +174,8 @@ public class ParseUserData extends BaseModel implements Serializable{
 		data.createdAt = obj.getCreatedAt().toString();
 		data.updatedAt = obj.getUpdatedAt().toString();
 		data.objectId = obj.getObjectId();
-		data.CurrentBeaconMac  = obj.getString(CURRENT_BEACON_MAC);
+		data.lastSeenAt = obj.getString("lastSeenAt");
+		data.CurrentBeaconMac = obj.getString(CURRENT_BEACON_MAC);
 		return data;
 	}
 

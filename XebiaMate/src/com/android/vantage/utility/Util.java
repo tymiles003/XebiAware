@@ -32,7 +32,7 @@ import com.activeandroid.query.Select;
 import com.android.vantage.R;
 import com.android.vantage.ModelClasses.EmpData;
 import com.android.vantage.ModelClasses.Message;
-import com.android.vantage.ModelClasses.RoomBeaconMap;
+import com.android.vantage.ModelClasses.RoomBeaconObject;
 import com.android.vantage.asyncmanager.FindUserService;
 import com.android.vantage.components.ParseBroadcastReceiver;
 import com.android.vantage.components.SendingPushMessageIntentService;
@@ -61,9 +61,16 @@ public class Util {
 		return randomNum;
 	}
 
-	public static final String JAVA_DATE_PATTERN = "E MMM dd HH:mm:ss";
+	public static final String JAVA_DATE_PATTERN = "E MMM dd HH:mm:ss Z yyyy";
 	public static final String REQUIRE_DATE_PATTERN = "MMM dd, HH:mm";
 	public static final String PARSE_CREATED_AT_DATE_PATTERN = "MMM dd, yyyy, HH:mm";
+	public static final String PARSE_ISO_DATE_FORMAT_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
+
+	public static String getParseRangeQuery(String startDate, String endDate) {
+		return String
+				.format("where={'createdAt':{'$gte':{'__type':'Date','iso':'%s'},'$lte':{'__type':'Date','iso':'%s'}}}",
+						startDate, endDate);
+	}
 
 	public static void downloadBeaconMap() {
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
@@ -74,13 +81,13 @@ public class Util {
 			public void done(List<ParseObject> objects, ParseException e) {
 				if (e == null) {
 					if (objects != null) {
-						new Delete().from(RoomBeaconMap.class).execute();
+						new Delete().from(RoomBeaconObject.class).execute();
 						for (ParseObject obj : objects) {
-							RoomBeaconMap map = new RoomBeaconMap();
+							RoomBeaconObject map = new RoomBeaconObject();
 							map.setBeaconMacAddress(obj
-									.getString(RoomBeaconMap.BEACON_MAC_ADDRESS));
+									.getString(RoomBeaconObject.BEACON_MAC_ADDRESS));
 							map.setRoomName(obj
-									.getString(RoomBeaconMap.ROOM_NAME));
+									.getString(RoomBeaconObject.ROOM_NAME));
 							map.save();
 						}
 					}
@@ -215,6 +222,21 @@ public class Util {
 		}
 		return "";
 	}
+	
+	public static String convertDateFormat(String currentDate, String currentDateFormatString,
+			String reqDateFormat) {
+		SimpleDateFormat currentDateFormat = new SimpleDateFormat(
+				currentDateFormatString);
+		SimpleDateFormat format = new SimpleDateFormat(reqDateFormat);
+		try {
+			Date d = currentDateFormat.parse(currentDate);
+			return format.format(d);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+	}
 
 	public static Object getColumnObject(Cursor c, String columnName) {
 		int colIndex = c.getColumnIndex(columnName);
@@ -266,7 +288,7 @@ public class Util {
 				new Intent[] { notifyIntent },
 				PendingIntent.FLAG_UPDATE_CURRENT);
 		Notification notification = new Notification.Builder(ctx)
-				.setSmallIcon(R.drawable.app_logo).setContentTitle("Xebia POC")
+				.setSmallIcon(R.drawable.xebia_logo).setContentTitle("Xebia POC")
 				.setContentText(msg).setAutoCancel(true)
 				.setContentIntent(pendingIntent).build();
 		notification.defaults |= Notification.DEFAULT_SOUND;
@@ -281,12 +303,18 @@ public class Util {
 		return format.parse(dateString);
 	}
 
+	public static Date convertDateFormat(Date date, String reqDateFormat,
+			String currentDateFormat) throws Exception {
+		String formattedDateString = convertDateFormat(date.toString(), currentDateFormat, reqDateFormat);
+		SimpleDateFormat format = new SimpleDateFormat(reqDateFormat);
+		return format.parse(formattedDateString);
+	}
+
 	public static void sendPushMessage(String msg, String to, Context ctx) {
 		Intent i = new Intent(ctx, SendingPushMessageIntentService.class);
 		i.putExtra(Message.MESSAGE_TEXT, msg);
 		i.putExtra(EmpData.EMP_ID, to);
 		ctx.startService(i);
-		
 
 	}
 

@@ -10,8 +10,7 @@
         android:id="@+id/iv_empImage"
         android:layout_width="60dp"
         android:layout_height="65dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/pi3" />
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/tv_empName"
@@ -57,7 +56,7 @@
         android:layout_marginTop="10dp"
         android:gravity="right|center_vertical"
         android:paddingTop="5dp"
-        android:text="21-Jan"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:text="21-Jan" />
 
 </RelativeLayout>
